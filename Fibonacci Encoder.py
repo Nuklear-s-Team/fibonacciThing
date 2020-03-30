@@ -1,4 +1,4 @@
-#Copyright 2019 by Khang Nguyen
+#Copyright 2019 by Khang Nguyen and Timothy Merrill
 
 #How to use:
 #Run the program.
@@ -21,7 +21,7 @@
 task = str(input("Decode or encode?"))
 totranslate = str(input("Give me the message."))
 keys = {" ": "|", "a": "2.", "b": "3.", "c": "5.", "d": "8.", "e": "13.", "f": "21.", "g": "34.", "h": "55.", "i": "89.", "j": "144.", "k": "233.", "l": "377.","m":"610.", "n": "987.", "o": "1597.", "p": "2584.", "q": "4181.", "r": "6765.", "s": "10946.",
-        "t": "17711.", "u": "28657.", "v": "46368.", "w": "75025.", "x": "121393.", "y": "196418.", "z": "317811.", "!": "!", ",": ",", "?": "?", "'": "'", "|": "|", ":": ":"}
+        "t": "17711.", "u": "28657.", "v": "46368.", "w": "75025.", "x": "121393.", "y": "196418.", "z": "317811.", "!": "!", ",": ",", "?": "?", "'": "'", "|": "|", ":": ":", "": ""}
 dekeys = {v: k for k, v in keys.items()}
 cdekeys = { k.replace('.', ''): v for k, v in dekeys.items() }
 if task == "en" or task == "encode" :
@@ -35,6 +35,7 @@ if task == "en" or task == "encode" :
 if task == "de" or task == "decode" :
     totranslate = totranslate.replace("|||", "~")
     totranslate = totranslate.replace("|", " ")
+
     translist = totranslate.split(sep=".")
     for item in translist:
         if " " in item:
