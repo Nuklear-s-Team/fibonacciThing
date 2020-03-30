@@ -14,7 +14,9 @@ How to use:
 Send the .py file to whoever you want to talk to privately, while confusing others in the channel/chatroom. When you run the program, it should ask you "Encode or decode?" Type in "en" or "encode" for encoding, and "de" or "decode" for decoding. After you do either of these, it will prompt you for a message. When encoding, you can use most common punctuation marks EXCEPT apostrophes, which denote strings in python and mess stuff up. If you have a fix, let me know. Just type in your message. Note: all capitalization will be erased. 
 
 For decoding, you need to copy the entire message, which should look something like this: 89.21|196418.1597.28657|55.2.46368.13|2.987.196418|10946.28657.34.34.13.10946.17711.89.1597.987.10946.,|10946.55.1597.1597.17711|610.13|2|8.610|||
-That says "If you have any suggestions, shoot me a dm." Try it out. It will un capitalize the I in if though. 
+That says "If you have any suggestions, shoot me a dm." Try it out. It will un capitalize the I in if though.
+
+After you finish a task, it will ask you "Another task?" Type Y or Yes to repeat, or anything else to end it. 
 
 So you can send weird messages to friends in plain sight, given that the others don't also have this program. 
 
