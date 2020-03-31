@@ -5,8 +5,8 @@
 #It will ask you to decode or encode.
 #Type de for decode, and en for encode.
 #Then type your message. While encoding,
-#you can use most punctuation.
-#You can use commas and other
+#you can use most punctuation except an
+#apostrophe. You can use commas and other
 #punctuation. While decoding, you just paste
 #the message you got in the prompt.
 
@@ -17,7 +17,7 @@
 #Please credit me as the original author if you are making something using this.
 #Thanks! :)
 
-
+import sys
 
 complete = False
 
@@ -28,12 +28,15 @@ def translate():
             "q": "4181.", "r": "6765.", "s": "10946.",
             "t": "17711.", "u": "28657.", "v": "46368.", "w": "75025.", "x": "121393.", "y": "196418.", "z": "317811.",
             "!": "!", ",": ",", "?": "?", "'": "'.", "|": "|", ":": ":", "": "", "-": "-."}
+    encodeNames = ["en", "encode", "En", "Encode"]
+    decodeNames = ["de", "decode", "De", "Decode"]
     dekeys = {v: k for k, v in keys.items()}
     cdekeys = {k.replace('.', ''): v for k, v in dekeys.items()}
     task = str(input("Decode or encode?"))
-    totranslate = str(input("Give me the message."))
     ask = "lol"
-    if task == "en" or task == "encode":
+    totranslate = "You did not choose a valid action."
+    if task in encodeNames:
+        totranslate = str(input("Give me the message."))
         totranslate = totranslate.lower()
         totranslate = totranslate.replace(".", "|||")
         for item in totranslate:
@@ -41,7 +44,8 @@ def translate():
             totranslate = totranslate.replace(".|", "|")
         if totranslate[len(totranslate) - 1] == ".":
             totranslate = totranslate[:len(totranslate) - 1]
-    elif task == "de" or task == "decode":
+    elif task in decodeNames:
+        totranslate = str(input("Give me the message."))
         totranslate = totranslate.replace("|||", "~")
         totranslate = totranslate.replace("|", " ")
 
@@ -76,7 +80,10 @@ def translate():
                 index = translist.index(item)
                 translist[index] = item.replace(item, str(cdekeys[item]))
         totranslate = "".join(translist)
+    else:
+        pass
     print(totranslate)
+    totranslate = "You did not choose a valid action."
     ask = input("Another task? Y or N")
     return ask
 
@@ -87,3 +94,4 @@ while complete is False:
         translate()
     else:
         complete = True
+        sys.exit()
