@@ -5,8 +5,8 @@
 #It will ask you to decode or encode.
 #Type de for decode, and en for encode.
 #Then type your message. While encoding,
-#you can use most punctuation except an
-#apostrophe. You can use commas and other
+#you can use most punctuation.
+#You can use commas and other
 #punctuation. While decoding, you just paste
 #the message you got in the prompt.
 
