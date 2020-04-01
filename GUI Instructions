@@ -1,0 +1,17 @@
+Hey guys. As you can see, the GUI version of the encoder is now released!
+
+To use it, just download the program and run it. It should pop up with a small window with some components.
+
+You should see two radio buttons, labeled Encode and Decode. At the beginning, both are checked. Uncheck one of them to make sure there is no glitches.
+
+Then you should see a text input, with two buttons next to it.
+
+The first button is translate, and the second one is Quit. Quit obviously qutis the application. But the translate button does the action
+
+To actually translate, choose an option, either Encode or Decode. Type your text in for encode, or paste in a message for decode. Then press translate, and the text will automagically change to either plain text or a jumble of numbers. 
+
+And that's it for that, thanks for supporting!
+
+Upcoming features are separate sets of ciphers and a better GUI.
+
+Khang and Tim
