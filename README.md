@@ -8,6 +8,9 @@ Thanks!
 
 Copyright 2019 Khang Nguyen and Timothy Merrill
 
+Contributors:
+  Luzgog
+
 
 How to use:
 
