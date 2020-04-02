@@ -20,17 +20,24 @@
 keys = {" ": "|", "a": "2.", "b": "3.", "c": "5.", "d": "8.", "e": "13.", "f": "21.", "g": "34.", "h": "55.","i": "89.", "j": "144.", "k": "233.", "l": "377.", "m": "610.", "n": "987.", "o": "1597.", "p": "2584.","q": "4181.", "r": "6765.", "s": "10946.","t": "17711.", "u": "28657.", "v": "46368.", "w": "75025.", "x": "121393.", "y": "196418.", "z": "317811.","!": "!", ",": ",", "?": "?", "'": "'.", "|": "|", ":": ":", "": "", "-": "-."}
 dekeys = {v: k for k, v in keys.items()}
 cdekeys = {k.replace('.', ''): v for k, v in dekeys.items()}
+reversedkeys = {" ": "|", "a": "317811.", "b": "196418.", "c": "121393.", "d": "75025.", "e": "46368.", "f": "28657.", "g": "17711.", "h": "10946.",
+        "i": "6765.", "j": "4181.", "k": "2584.", "l": "1597.", "m": "897.", "n": "610.", "o": "377.", "p": "233.",
+        "q": "144.", "r": "89.", "s": "55.", "t": "34.", "u": "21.", "v": "13.", "w": "8.",
+        "x": "5.", "y": "3.", "z": "2.", "!": "!", ",": ",", "?": "?", "'": "'.", "|": "|", ":": ":",
+        "": "", "-": "-."}
 
-def encode(message):
+dereversedkeys = {v: k for k, v in reversedkeys.items()}
+cdereversedkeys = {k.replace('.', ''): v for k, v in dereversedkeys.items()}
+def encode(message, reverse):
     totranslate = message.lower()
     totranslate = totranslate.replace(".", "|||")
     for item in totranslate:
-        totranslate = totranslate.replace(item, str(keys[item]))
+        totranslate = totranslate.replace(item, str(reversedkeys[item]) if reverse == True else str(keys[item]))
         totranslate = totranslate.replace(".|", "|")
     if totranslate[-1] == ".":
         totranslate = totranslate[:len(totranslate) - 1]
     return totranslate
-def decode(message):
+def decode(message, reverse):
     totranslate = message.replace("|||", "~")
     totranslate = totranslate.replace("|", " ")
     translist = totranslate.split(sep=".")
@@ -43,26 +50,26 @@ def decode(message):
                     temp2 = item.replace("~", "")
                     tempIndex = temp.index(item)
                     temp[tempIndex] = temp2
-                    temp2 = str(cdekeys[temp2])  # excuse my messy code here
+                    temp2 = str(cdereversedkeys[temp2] if reverse==True else cdekeys[temp2])  # excuse my messy code here
                     temp[tempIndex] = temp2
                     temp2 = temp2 + ". "
                     temp[tempIndex] = temp2
                 else:
                     index2 = temp.index(item)
-                    item = str(cdekeys[item])
+                    item = str(cdereversedkeys[item] if reverse==True else cdekeys[item])
                     temp[index2] = item
 
             item = " ".join(temp)
             translist[index1] = item
         elif "~" in item:
             temp = item.replace("~", "")
-            temp = str(cdekeys[temp])
+            temp = str(cdereversedkeys[temp] if reverse==True else cdekeys[temp])
             index = translist.index(item)
             item = temp + ". "
             translist[index] = item
         else:
             index = translist.index(item)
-            translist[index] = item.replace(item, str(cdekeys[item]))
+            translist[index] = item.replace(item, str(cdereversedkeys[item]) if reverse==True else str(cdekeys[temp2]))
     return "".join(translist)
 if __name__ == '__main__': #executed only if you use the file directly and not by importing it
     complete = False
@@ -70,15 +77,26 @@ if __name__ == '__main__': #executed only if you use the file directly and not b
     encodeNames = ["en", "encode", "En", "Encode", "e", "E"]
     while complete == False:
         task = str(input("Decode or encode?"))
+        if task not in encodeNames + decodeNames:
+            continue
+        print("reverse? Y or N")
+        input1 = str(input())
+        if input1 in ["Y", "y", "yes", "Yes"]:
+            reverse = True
+        elif input1 in ["No", "N", "n", "no"]:
+            reverse=False
+        else:
+            print("Don't understand")
+            continue
         if task in encodeNames:
             print("Give me your message")
-            message = str(input(""))
-            print(encode(message))
+            message = str(input())
+            print(encode(message, reverse))
     
         elif task in decodeNames:
             print("Give me your message")
-            message = str(input(""))
-            print(decode(message))
+            message = str(input())
+            print(decode(message, reverse))
       
         else:
             print("You did not choose a valid action.")
