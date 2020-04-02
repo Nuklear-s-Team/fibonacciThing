@@ -14,7 +14,7 @@ Contributors:
 
 ##How to use:
 
-Send the .py file to whoever you want to talk to privately, while confusing others in the channel/chatroom. When you run the program, it should ask you "Encode or decode?" Type in "en" or "encode" for encoding, and "de" or "decode" for decoding.Then the program will ask you if you if you want to use the reverse mod, type "Yes" or "Y" if you want to or "No" if you don't. After you do either of these, it will prompt you for a message. When encoding, you can use most common punctuation marks. Just type in your message. Note: all capitalization will be erased. You cannot use numbers for obvious reasons, just type the numbers out. 
+Send the .py file to whoever you want to talk to privately, while confusing others in the channel/chatroom. When you run the program, it should ask you "Encode or decode?" Type in "en" or "encode" for encoding, and "de" or "decode" for decoding.Then the program will ask you if you if you want to use the reverse mode, type "Yes" or "Y" if you want to or "No" if you don't. After you do either of these, it will prompt you for a message. When encoding, you can use most common punctuation marks. Just type in your message. Note: all capitalization will be erased. You cannot use numbers for obvious reasons, just type the numbers out. 
 
 For decoding, you need to copy the entire message, which should look something like this: 89.21|196418.1597.28657|55.2.46368.13|2.987.196418|10946.28657.34.34.13.10946.17711.89.1597.987.10946.,|10946.55.1597.1597.17711|610.13|2|8.610|||
 That says "If you have any suggestions, shoot me a dm." Try it out. It will un capitalize the I in if though.
