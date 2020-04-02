@@ -1,4 +1,5 @@
 #Copyright 2019 by Khang Nguyen and Timothy Merrill
+#Improved by Luzgog
 
 #How to use:
 #Run the program.
