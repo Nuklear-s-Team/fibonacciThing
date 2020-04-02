@@ -2,13 +2,15 @@ Hey guys. As you can see, the GUI version of the encoder is now released!
 
 To use it, just download the program and run it. It should pop up with a small window with some components. If it gives an error, make sure you have downloaded the other version of this, the one without the GUI. They have to be downloaded to the same folder for this to work. If it still doesn't work, dm me. 
 
-You should see two radio buttons, labeled Encode and Decode. At the beginning, both are checked. Uncheck one of them to make sure there is no glitches.
+You should see two radio buttons on the left, labeled Encode and Decode. At the beginning, both are checked. Uncheck one of them to make sure there is no glitches.
+
+Then there are 2 on the right, labeled Regular and Reverse. This changes the set of keys that the encoder will use.
 
 Then you should see a text input, with two buttons next to it.
 
 The first button is translate, and the second one is Quit. Quit obviously qutis the application. But the translate button does the action
 
-To actually translate, choose an option, either Encode or Decode. Type your text in for encode, or paste in a message for decode. Then press translate, and the text will automagically change to either plain text or a jumble of numbers. 
+To actually translate, choose an option, either Encode or Decode. Then choose a mode. Make sure the person you are sending it to know which mode, or they will get gibberish. Type your text in for encode, or paste in a message for decode. Then press translate, and the text will automagically change to either plain text or a jumble of numbers. 
 
 And that's it for that, thanks for supporting!
 
