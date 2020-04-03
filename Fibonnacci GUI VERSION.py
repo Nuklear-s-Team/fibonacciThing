@@ -36,31 +36,30 @@ Decode = tkinter.Radiobutton(root, text='Decode', variable=lol, value="Decode", 
 Regular = tkinter.Radiobutton(root, text='Regular', variable=mode, value="Regular", indicatoron=0, width=42, selectcolor="cyan").grid(row=3, column=0, sticky=tkinter.W)
 Reversed = tkinter.Radiobutton(root, text='Reversed', variable=mode, value="Reversed", indicatoron=0, width=42, selectcolor="cyan").grid(row=3, column=0, sticky=tkinter.E)
 
-J = tkinter.Scale(root, state=tkinter.DISABLED, length=600, troughcolor="black", width=1, orient=tkinter.HORIZONTAL, showvalue=0, sliderlength=200)
+J = tkinter.Scale(root, state=tkinter.DISABLED, length=600, troughcolor="black", width=1, orient=tkinter.HORIZONTAL, showvalue=0, sliderlength=200, label="--------------------------------------------------------Mode--------------------------------------------------------")
 J.set(100)
 J.grid(row=0, sticky=tkinter.N)
 
-R = tkinter.Scale(root, state=tkinter.DISABLED, length=500, troughcolor="black", width=1, orient=tkinter.HORIZONTAL, showvalue=0, sliderlength=200)
+R = tkinter.Scale(root, state=tkinter.DISABLED, length=500, troughcolor="black", width=1, orient=tkinter.HORIZONTAL, showvalue=0, sliderlength=200, label="--------------------------------------------Key Sets--------------------------------------------")
 R.set(100)
 R.grid(row=2, sticky=tkinter.N)
 
-
 T = tkinter.Entry(root, width=100)
-L = tkinter.Scale(root, state=tkinter.DISABLED, length=500, troughcolor="black", width=1, orient=tkinter.HORIZONTAL, showvalue=0, sliderlength=200)
+L = tkinter.Scale(root, state=tkinter.DISABLED, length=500, troughcolor="black", width=1, orient=tkinter.HORIZONTAL, showvalue=0, sliderlength=200, label="------------------------------------------Input Below------------------------------------------")
 L.set(100)
-L.grid(row=4, sticky=tkinter.N)
-T.grid(row=5, column=0, sticky=tkinter.W)
+L.grid(row=5, sticky=tkinter.N)
+T.grid(row=6, column=0, sticky=tkinter.W)
 
 X = tkinter.Scale(root, state=tkinter.DISABLED, length=500, troughcolor="black", width=1, orient=tkinter.HORIZONTAL, showvalue=0, sliderlength=200)
 X.set(100)
-X.grid(row=6, sticky=tkinter.N)
+X.grid(row=7, sticky=tkinter.N)
 
-Translate = tkinter.Button(root, text="Translate", command=translate, width=42, activebackground="light green").grid(row=7, column=0, sticky=tkinter.W)
-Quit = tkinter.Button(root, text="Quit", command=root.quit, width=42, activebackground="red").grid(row=7, column=0, sticky=tkinter.E)
+Translate = tkinter.Button(root, text="Translate", command=translate, width=42, activebackground="light green").grid(row=8, column=0, sticky=tkinter.W)
+Quit = tkinter.Button(root, text="Quit", command=root.quit, width=42, activebackground="red").grid(row=8, column=0, sticky=tkinter.E)
 T.insert(tkinter.END, "")
 
 X = tkinter.Scale(root, state=tkinter.DISABLED, length=600, troughcolor="black", width=1, orient=tkinter.HORIZONTAL, showvalue=0, sliderlength=200)
 X.set(100)
-X.grid(row=8, sticky=tkinter.N)
+X.grid(row=9, sticky=tkinter.N)
 
 tkinter.mainloop()
