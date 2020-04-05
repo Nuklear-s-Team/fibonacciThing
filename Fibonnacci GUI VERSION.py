@@ -4,13 +4,19 @@
 # Made with the same translate function as the original.
 
 import tkinter as tkinter
+from tkinter import messagebox
 import time
 from Fibonacci_Encoder import encode, decode, encodeReversed, decodeReversed
 root = tkinter.Tk(className="Fibonacci Encoder")
 lol = tkinter.StringVar()
 mode = tkinter.StringVar()
+root.iconphoto(False, tkinter.PhotoImage(file="icon.png"))
 decodeNames = ["de", "decode", "De", "Decode", "d", "D"]
 encodeNames = ["en", "encode", "En", "Encode", "e", "E"]
+
+
+def error():
+    messagebox.showerror("Error", "Invalid Input")
 
 
 def translate():
@@ -20,14 +26,26 @@ def translate():
     T.delete(0, tkinter.END)
     if task in encodeNames:
         if version == "Regular":
-            totranslate= encode(message)
+            try:
+                totranslate= encode(message)
+            except BaseException:
+                error()
         elif version == "Reversed":
-            totranslate = encodeReversed(message)
+            try:
+                totranslate = encodeReversed(message)
+            except BaseException:
+                error()
     elif task in decodeNames:
         if version == "Regular":
-            totranslate = decode(message)
+            try:
+                totranslate = decode(message)
+            except BaseException:
+                error()
         elif version == "Reversed":
-            totranslate = decodeReversed(message)
+            try:
+                totranslate = decodeReversed(message)
+            except BaseException:
+                error()
     T.insert(tkinter.END, totranslate)
 
 
