@@ -5,11 +5,14 @@
 
 import tkinter as tkinter
 from tkinter import messagebox
+from tkinter import scrolledtext
 import time
 from Fibonacci_Encoder import encode, decode, encodeReversed, decodeReversed
 root = tkinter.Tk(className="Fibonacci Encoder")
 lol = tkinter.StringVar()
 mode = tkinter.StringVar()
+lastTranslation = tkinter.StringVar()
+lastTranslation.set("Last Tranlsation: None")
 root.iconphoto(False, tkinter.PhotoImage(file="icon.png"))
 decodeNames = ["de", "decode", "De", "Decode", "d", "D"]
 encodeNames = ["en", "encode", "En", "Encode", "e", "E"]
@@ -47,6 +50,8 @@ def translate():
             except BaseException:
                 error()
     T.insert(tkinter.END, totranslate)
+    link.delete(1.0, tkinter.END)
+    link.insert(1.0, "Last Translation: " + message + " <-> " + totranslate)
 
 
 Encode = tkinter.Radiobutton(root, text='Encode', variable=lol, value="Encode", indicatoron=0, width=42, selectcolor="light green").grid(row=1, column=0, sticky=tkinter.W)
@@ -79,5 +84,11 @@ T.insert(tkinter.END, "")
 X = tkinter.Scale(root, state=tkinter.DISABLED, length=600, troughcolor="black", width=1, orient=tkinter.HORIZONTAL, showvalue=0, sliderlength=200)
 X.set(100)
 X.grid(row=9, sticky=tkinter.N)
+
+link = scrolledtext.ScrolledText(root, width=74, height=5, wrap="word")
+link.grid(row=10, sticky=tkinter.W)
+
+info = tkinter.Label(root, text="https://github.com/PG-Development/Fibonacci-Encoder")
+info.grid(row=11, sticky=tkinter.E)
 
 tkinter.mainloop()
