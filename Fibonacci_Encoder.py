@@ -243,19 +243,44 @@ if __name__ == '__main__':  # executed only if you use the file directly and not
                     print(encodeRandom(message, randomDict))
                 else:
                     print(encodeRandom(message, generatefromkey(key)))
-
-
-
+            elif i in ["No", "N", "n", "no"]:
+                print("Reverse Y or N?")
+                k = input()
+                if k in ["Yes", "yes", "y", "Y"]:
+                    print("Give me the message")
+                    message = input()
+                    print(encodeReversed(message))
+                else:
+                    print("Normal Mode")
+                    print("Give me your message")
+                    message = str(input(""))
+                    print(encode(message))
             else:
-                print("Give me your message")
-                message = str(input(""))
-                print(encode(message))
+                print("Wrong input")
 
         elif task in decodeNames:
-            print("Give me your message")
-            message = str(input(""))
-            print(decode(message))
-
+            print("Random? Y or N")
+            i = input()
+            if i in ["Yes", 'y', 'yes', 'Y']:
+                print("Give me the message")
+                message = input()
+                print("Give me the key ")
+                key_input = input()
+                print(decodeRandom(message, generatefromkey(key_input)))
+            elif i in ["No", "N", "n", "no"]:
+                print("Reverse Y or N?")
+                k = input()
+                if k in ["Yes", "yes", "y", "Y"]:
+                    print("Give me the message")
+                    message = input()
+                    print(decodeReversed(message))
+                else:
+                    print("Normal Mode")
+                    print("Give me your message")
+                    message = str(input(""))
+                    print(decode(message))
+            else:
+                print("Wrong input")
         else:
             print("You did not choose a valid action.")
         print("Another task? Y or N")
