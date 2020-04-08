@@ -16,7 +16,7 @@
 # This is being fixed soon.
 
 # Please credit me as the original author if you are making something using this.
-# Thanks! :)
+# Thanks! :) ;)
 
 import random
 
@@ -148,14 +148,19 @@ def decodeReversed(message):
 
 
 def randomGen():
+    global availableKeys
+    global availableKeysBase
+    keyList = []
     randomDict = {}
     for b in letters:
-        randomNum=random.randint(0, len(availableKeys)-1)
+        randomNum = random.randint(0, len(availableKeys)-1)
         randomDict[b] = availableKeys[randomNum]
         keyList.append(str(availableKeysBase.index(availableKeys[randomNum])))
         availableKeys.pop(randomNum)
     randomDict.update(symbolsDict)
     finalKey = ",".join(keyList)
+    availableKeys = ["2.", "3.", "5.", "8.", "13.", "21.", "34.", "55.", "89.", "144.", "233.", "377.", "610.", "987.", "1597.", "2584.",
+                     "4181.", "6765.", "10946.", "17711.", "28657.", "46368.", "75025.", "121393.", "196418.", "317811."]
     return randomDict, finalKey
 
 

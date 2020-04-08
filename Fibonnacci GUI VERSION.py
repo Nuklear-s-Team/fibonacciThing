@@ -15,7 +15,7 @@ mode = tkinter.StringVar()
 lastTranslation = tkinter.StringVar()
 key = tkinter.StringVar()
 lastTranslation.set("Last Tranlsation: None")
-root.iconphoto(False, tkinter.PhotoImage(file="icon.png"))
+#root.iconphoto(False, tkinter.PhotoImage(file="icon.png"))
 decodeNames = ["de", "decode", "De", "Decode", "d", "D"]
 encodeNames = ["en", "encode", "En", "Encode", "e", "E"]
 
@@ -59,10 +59,10 @@ def translate():
                 if getKey == "":
                     randomDict, key2 = randomGen()
                     key.set(key2)
+                    key2 = ''
                     totranslate = encodeRandom(message, randomDict)
                     getKey = ""
                     randomDict = {}
-                    key2 = ""
                 else:
                     totranslate = encodeRandom(message, generatefromkey(getKey))
                     getKey = ""
@@ -88,8 +88,9 @@ def translate():
     link.delete(1.0, tkinter.END)
     keyDisplay.delete(1.0, tkinter.END)
     mode2 = mode.get()
-    link.insert(1.0, "Last Translation: (" + mode2 + " Mode) "+ message + " <-> " + totranslate)
-    keyDisplay.insert(1.0, key.get())
+    link.insert(1.0, "Last Translation: (" + mode2 + " Mode) " + message + " <-> " + totranslate)
+    keyDisplay.insert(1.0, str(key.get()))
+    key.set("")
 
 
 Encode = tkinter.Radiobutton(root, text='Encode', variable=lol, value="Encode", indicatoron=0, width=42, selectcolor="light green").grid(row=1, column=0, sticky=tkinter.W)
@@ -129,7 +130,7 @@ X.grid(row=11, sticky=tkinter.N, columnspan=2)
 link = scrolledtext.ScrolledText(root, width=65, height=5, wrap="word", font="consolas")
 link.grid(row=12, sticky=tkinter.W, columnspan=2)
 
-keyDisplay = tkinter.Text(root, height=1, width=75, wrap="word")
+keyDisplay = scrolledtext.ScrolledText(root, height=0.5, width=73, wrap="word")
 keyDisplay.grid(row=13, sticky=tkinter.W, columnspan=2)
 
 info = tkinter.Label(root, text="Created by Khang Nguyen and Luzgog. Github link: https://github.com/PG-Development/Fibonacci-Encoder")
