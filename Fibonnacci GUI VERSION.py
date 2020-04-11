@@ -10,6 +10,8 @@ from Fibonacci_Encoder import encode, decode, encodeReversed, decodeReversed, ra
 root = tkinter.Tk(className="Fibonacci Encoder")
 help = tkinter.Toplevel(width=90, height=90)
 help.withdraw()
+translations = tkinter.Toplevel(width=90, height=90)
+translations.withdraw()
 lol = tkinter.StringVar()
 mode = tkinter.StringVar()
 lastTranslation = tkinter.StringVar()
@@ -101,7 +103,21 @@ def translate():
 
 
 def saveTranslation():
-    pass
+    global currentTranslation
+    saves.config(state=tkinter.NORMAL)
+    saves.insert(tkinter.END, currentTranslation)
+    saves.insert(tkinter.END, "\n\n")
+    saves.config(state=tkinter.DISABLED)
+
+
+
+def openTrans():
+    translations.deiconify()
+
+
+def closeTrans():
+    translations.withdraw()
+
 
 def copyKey():
     root.clipboard_clear()
@@ -147,12 +163,14 @@ link.grid(row=12, sticky=tkinter.W, columnspan=2)
 
 save = tkinter.Button(root, text="Save this translation", command=saveTranslation, width=42, activebackground="light green").grid(row=13, column=0, sticky=tkinter.N)
 copy = tkinter.Button(root, text="Copy this key", command=copyKey, width=42, activebackground="light green").grid(row=13, column=1, sticky=tkinter.N)
+openTranslations = tkinter.Button(root, text="Open Saved Translations", command = openTrans, width=85, activebackgroun="light green").grid(row=14, column=0, columnspan=2, sticky=tkinter.N)
+
 
 keyDisplay = scrolledtext.ScrolledText(root, height=0.5, width=73, wrap="word", state=tkinter.DISABLED)
-keyDisplay.grid(row=14, sticky=tkinter.W, columnspan=2)
+keyDisplay.grid(row=15, sticky=tkinter.W, columnspan=2)
 
 info = tkinter.Label(root, text="Created by Khang Nguyen and Luzgog. Github link: https://github.com/PG-Development/Fibonacci-Encoder")
-info.grid(row=15, sticky=tkinter.E, columnspan=2)
+info.grid(row=16, sticky=tkinter.E, columnspan=2)
 
 # help window below
 
@@ -195,5 +213,12 @@ helpText.tag_config("regularTag", foreground="blue", font=("Consolas", 12, "bold
 helpText.config(state=tkinter.DISABLED)
 closeHelpButton = tkinter.Button(help, text="Exit Help Menu", command=closeHelp, activebackground="red").grid(row=2, sticky=tkinter.N)
 
+# saved translations below
+
+titleTrans = tkinter.Label(translations, text="Saved Translations").grid(row=0, sticky=tkinter.N)
+saves = scrolledtext.ScrolledText(translations, width=65, height=20, wrap="word")
+saves.grid(row=1, sticky=tkinter.N)
+saves.config(state=tkinter.DISABLED)
+closeTransButton = tkinter.Button(translations, text="Exit Saved Translations", command=closeTrans, activebackground="red").grid(row=2, sticky=tkinter.N)
 
 tkinter.mainloop()
