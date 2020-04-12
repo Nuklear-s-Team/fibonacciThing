@@ -103,13 +103,29 @@ def translate():
     keyDisplay.config(state=tkinter.DISABLED)
 
 
-def saveTranslation():
-    global currentTranslation
+def updateSaves():
     saves.config(state=tkinter.NORMAL)
-    saves.insert(tkinter.END, currentTranslation)
-    saves.insert(tkinter.END, "\n\n")
+    saves.delete(1.0, tkinter.END)
+    with open("savedTranslations.txt", "r") as file:
+        textIn = file.read()
+    saves.insert(1.0, textIn)
     saves.config(state=tkinter.DISABLED)
 
+
+    # insert text
+
+def saveTranslation():
+    global currentTranslation
+    with open("savedTranslations.txt", 'a') as file:
+        file.write("\n\n")
+        file.write(currentTranslation)
+    updateSaves()
+    # save file
+
+def clearSaves():
+    with open("savedTranslations.txt", "w") as file:
+        file.write("")
+    updateSaves()
 
 
 def openTrans():
@@ -231,6 +247,9 @@ titleTrans = tkinter.Label(translations, text="Saved Translations").grid(row=0, 
 saves = scrolledtext.ScrolledText(translations, width=65, height=20, wrap="word")
 saves.grid(row=1, sticky=tkinter.N)
 saves.config(state=tkinter.DISABLED)
-closeTransButton = tkinter.Button(translations, text="Exit Saved Translations", command=closeTrans, activebackground="red").grid(row=2, sticky=tkinter.N)
+closeTransButton = tkinter.Button(translations, text="Exit Saved Translations", command=closeTrans, activebackground="red", width=38).grid(row=2, sticky=tkinter.W)
+clearSavesButton = tkinter.Button(translations, text="Clear Saves", command=clearSaves, activebackground="red", width=38).grid(row=2, sticky=tkinter.E)
+
+saveTranslation()
 
 tkinter.mainloop()
