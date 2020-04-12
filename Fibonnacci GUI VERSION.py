@@ -8,6 +8,7 @@ from tkinter import messagebox
 from tkinter import scrolledtext
 from Fibonacci_Encoder import encode, decode, encodeReversed, decodeReversed, randomGen, encodeRandom, generatefromkey, decodeRandom
 root = tkinter.Tk(className="Fibonacci Encoder")
+root.resizable(0, 0)
 help = tkinter.Toplevel(width=90, height=90)
 help.withdraw()
 translations = tkinter.Toplevel(width=90, height=90)
@@ -161,16 +162,20 @@ X.grid(row=11, sticky=tkinter.N, columnspan=2)
 link = scrolledtext.ScrolledText(root, width=65, height=5, wrap="word", font="consolas", state=tkinter.DISABLED)
 link.grid(row=12, sticky=tkinter.W, columnspan=2)
 
-save = tkinter.Button(root, text="Save this translation", command=saveTranslation, width=42, activebackground="light green").grid(row=13, column=0, sticky=tkinter.N)
-copy = tkinter.Button(root, text="Copy this key", command=copyKey, width=42, activebackground="light green").grid(row=13, column=1, sticky=tkinter.N)
-openTranslations = tkinter.Button(root, text="Open Saved Translations", command = openTrans, width=85, activebackgroun="light green").grid(row=14, column=0, columnspan=2, sticky=tkinter.N)
+uti = tkinter.Scale(root, state=tkinter.DISABLED, length=600, troughcolor="black", width=1, orient=tkinter.HORIZONTAL, showvalue=0, sliderlength=200, label="-------------------------------------------------------Utilities-------------------------------------------------------")
+uti.set(100)
+uti.grid(row=13, sticky=tkinter.N, columnspan=2)
+
+save = tkinter.Button(root, text="Save this translation", command=saveTranslation, width=42, activebackground="light green").grid(row=14, column=0, sticky=tkinter.N)
+copy = tkinter.Button(root, text="Copy this key", command=copyKey, width=42, activebackground="light green").grid(row=14, column=1, sticky=tkinter.N)
+openTranslations = tkinter.Button(root, text="Open Saved Translations", command = openTrans, width=85, activebackgroun="light green").grid(row=15, column=0, columnspan=2, sticky=tkinter.N)
 
 
 keyDisplay = scrolledtext.ScrolledText(root, height=0.5, width=73, wrap="word", state=tkinter.DISABLED)
-keyDisplay.grid(row=15, sticky=tkinter.W, columnspan=2)
+keyDisplay.grid(row=16, sticky=tkinter.W, columnspan=2)
 
 info = tkinter.Label(root, text="Created by Khang Nguyen and Luzgog. Github link: https://github.com/PG-Development/Fibonacci-Encoder")
-info.grid(row=16, sticky=tkinter.E, columnspan=2)
+info.grid(row=17, sticky=tkinter.E, columnspan=2)
 
 # help window below
 
@@ -205,14 +210,21 @@ helpText.insert(1.0, "Thanks for downloading this encoder! My team and I have wo
                      "more messages using the same key, just copy the key and put it in the box. When you send messages to someone else, send them the key privately, so then you can"
                      " send them the message in public and other people will get gibberish.\n\n"
                      "To decode using this mode, you must have a key, or else you will get an error. Put the key in the box next to \"Use Random Dictionary\". Then select \"Decode\" "
-                     "and \"Use Random Dictionary\". Finally, put in the message in the lower entry box. When you press Translate, you should get a good message.")
+                     "and \"Use Random Dictionary\". Finally, put in the message in the lower entry box. When you press Translate, you should get a good message.\n\n"
+                     "Utilities\n"
+                     "There are 3 utilities buttons: the \"Save this translation\" button, the \"Copy this key\" button, and the \"Open Saved Translations\" button. "
+                     "These are here to help you use the app more efficiently.\n\n"
+                     "The \"Save This Translations\" button takes the translation you just did and puts it into another text window that you can open. This text resets everytime you "
+                     "close the app, so keep the app open go save your translations. This feature will be improved in the future to save the translation to a text file. To open this text "
+                     "window, just press the \"Open Saved Translations\" button. The \"Copy This Key\" button just copies the key if you have one.")
 helpText.tag_add("important", "3.0", "3.9")
-helpText.tag_add("regularTag", "7.0", "7.12", "10.0", "10.13", "13.0", "13.12")
+helpText.tag_add("regularTag", "7.0", "7.12", "10.0", "10.13", "13.0", "13.12", "20.0", "20.9")
 helpText.tag_config("important", foreground="red", font=("Consolas", 13, "bold", "italic"))
 helpText.tag_config("regularTag", foreground="blue", font=("Consolas", 12, "bold", "italic"))
 helpText.config(state=tkinter.DISABLED)
 closeHelpButton = tkinter.Button(help, text="Exit Help Menu", command=closeHelp, activebackground="red").grid(row=2, sticky=tkinter.N)
 
+# saved translations below
 # saved translations below
 
 titleTrans = tkinter.Label(translations, text="Saved Translations").grid(row=0, sticky=tkinter.N)
