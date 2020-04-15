@@ -16,6 +16,7 @@ translations.withdraw()
 lol = tkinter.StringVar()
 mode = tkinter.StringVar()
 lastTranslation = tkinter.StringVar()
+remTrue = tkinter.IntVar()
 key = tkinter.StringVar()
 lastTranslation.set("Last Tranlsation: None")
 currentTranslation = ""
@@ -141,6 +142,24 @@ def copyKey():
     root.clipboard_append(keyDisplay.get(1.0, tkinter.END))
 
 
+def remember():
+    if remTrue.get() == 0:
+        with open("savedKey.txt", "w") as file:
+            file.write("")
+    else:
+        with open("savedKey.txt", "w") as file:
+            file.write(RandomEncode.get())
+
+
+def initialize():
+    saveTranslation()
+    with open("savedKey.txt", "r") as file:
+        key3 = file.read()
+    if key3 == "":
+        pass
+    else:
+        RandomEncode.insert(1, key3)
+
 Encode = tkinter.Radiobutton(root, text='Encode', variable=lol, value="Encode", indicatoron=0, width=42, selectcolor="light green").grid(row=1, column=0, sticky=tkinter.W)
 Decode = tkinter.Radiobutton(root, text='Decode', variable=lol, value="Decode", indicatoron=0, width=42, selectcolor="light green").grid(row=1, column=1, sticky=tkinter.E)
 Regular = tkinter.Radiobutton(root, text='Regular', variable=mode, value="Regular", indicatoron=0, width=42, selectcolor="cyan").grid(row=4, column=0, sticky=tkinter.W)
@@ -184,8 +203,8 @@ uti.grid(row=13, sticky=tkinter.N, columnspan=2)
 
 save = tkinter.Button(root, text="Save this translation", command=saveTranslation, width=42, activebackground="light green").grid(row=14, column=0, sticky=tkinter.N)
 copy = tkinter.Button(root, text="Copy this key", command=copyKey, width=42, activebackground="light green").grid(row=14, column=1, sticky=tkinter.N)
-openTranslations = tkinter.Button(root, text="Open Saved Translations", command = openTrans, width=85, activebackgroun="light green").grid(row=15, column=0, columnspan=2, sticky=tkinter.N)
-
+openTranslations = tkinter.Button(root, text="Open Saved Translations", command=openTrans, width=42, activebackgroun="light green").grid(row=15, column=0, sticky=tkinter.N)
+rememberKey = tkinter.Checkbutton(root, text="Remember my key", var=remTrue, command=remember).grid(row=15, column=1, sticky=tkinter.N)
 
 keyDisplay = scrolledtext.ScrolledText(root, height=0.5, width=73, wrap="word", state=tkinter.DISABLED)
 keyDisplay.grid(row=16, sticky=tkinter.W, columnspan=2)
@@ -232,7 +251,10 @@ helpText.insert(1.0, "Thanks for downloading this encoder! My team and I have wo
                      "These are here to help you use the app more efficiently.\n\n"
                      "The \"Save This Translations\" button takes the translation you just did and puts it into another text window that you can open. This text resets everytime you "
                      "close the app, so keep the app open go save your translations. This feature will be improved in the future to save the translation to a text file. To open this text "
-                     "window, just press the \"Open Saved Translations\" button. The \"Copy This Key\" button just copies the key if you have one.")
+                     "window, just press the \"Open Saved Translations\" button. The \"Copy This Key\" button just copies the key if you have one.\n\n"
+                     "A new feature is the \"Remember my key\" feature, which can save your key for another time. Whenever you want to save your key, just check it. To update your "
+                     "key, you must uncheck it and then recheck it to make changes to the .txt file. If you want to use this feature, you must download the savedKey.txt file. To "
+                     "reset your key, you can just uncheck it again.")
 helpText.tag_add("important", "3.0", "3.9")
 helpText.tag_add("regularTag", "7.0", "7.12", "10.0", "10.13", "13.0", "13.12", "20.0", "20.9")
 helpText.tag_config("important", foreground="red", font=("Consolas", 13, "bold", "italic"))
@@ -250,6 +272,6 @@ saves.config(state=tkinter.DISABLED)
 closeTransButton = tkinter.Button(translations, text="Exit Saved Translations", command=closeTrans, activebackground="red", width=38).grid(row=2, sticky=tkinter.W)
 clearSavesButton = tkinter.Button(translations, text="Clear Saves", command=clearSaves, activebackground="red", width=38).grid(row=2, sticky=tkinter.E)
 
-saveTranslation()
+initialize()
 
 tkinter.mainloop()
